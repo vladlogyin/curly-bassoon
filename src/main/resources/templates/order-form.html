@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Edit Form</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Order Edit Form
+</h1>
+<form th:action="@{/updateOrder}" th:object="${orderToEdit}" method="POST">
+    <label for="OrderID">Order ID</label>
+    <input type="text" id="OrderID" name="OrderID" th:field="*{id}" /><br/>
+
+    <label for="CustomerID">Customer ID</label>
+    <input type="text" id="CustomerID" name="CustomerID" th:field="*{customerID}" /><br/>
+
+    <label for="EmployeeID">Employee ID</label>
+    <input type="text" id="EmployeeID" name="EmployeeID" th:field="*{employeeID}" /><br/>
+
+    <label for="OrderDate">Order Date</label>
+    <input type="text" id="OrderDate" name="OrderDate" th:field="*{orderDate}" /><br/>
+
+    <label for="RequiredDate">Required Date</label>
+    <input type="text" id="RequiredDate" name="RequiredDate" th:field="*{requiredDate}" /><br/>
+
+    <label for="ShippedDate">Shipped Date</label>
+    <input type="text" id="ShippedDate" name="ShippedDate" th:field="*{shippedDate}" /><br/>
+
+    <label for="Freight">Freight</label>
+    <input type="text" id="Freight" name="Freight" th:field="*{freight}" /><br/>
+
+    <label for="ShipName">Ship Name</label>
+    <input type="text" id="ShipName" name="ShipName" th:field="*{shipName}" /><br/>
+
+    <label for="ShipAddress">Ship Address</label>
+    <input type="text" id="ShipAddress" name="ShipAddress" th:field="*{shipAddress}" /><br/>
+
+    <label for="ShipCity">Ship City</label>
+    <input type="text" id="ShipCity" name="ShipCity" th:field="*{shipCity}" /><br/>
+
+    <label for="ShipRegion">Ship Region</label>
+    <input type="text" id="ShipRegion" name="ShipRegion" th:field="*{shipRegion}" /><br/>
+
+    <label for="ShipPostalCode">Ship Postal Code</label>
+    <input type="text" id="ShipPostalCode" name="ShipPostalCode" th:field="*{shipPostalCode}" /><br/>
+
+    <label for="ShipCountry">Ship Country</label>
+    <input type="text" id="ShipCountry" name="ShipCountry" th:field="*{shipCountry}" /><br/>
+
+    <input type="submit" value="Submit Update" />
+</form>
+</body>
+</html>

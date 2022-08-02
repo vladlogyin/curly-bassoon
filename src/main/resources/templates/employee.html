@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+    <style>
+
+        body {
+            background-image: url("/images/bg.jpg");
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        td, th {
+            border: 1px solid transparent;
+            text-align: left;
+            padding: 8px;
+            background-color: transparent;
+        }
+
+        tr:nth-child(even) {
+            background-color: transparent;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: fantasy;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<h1> Employee Details</h1>
+<table style="background-color: transparent">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th> Title </th>
+        <th> First Name </th>
+        <th> Last Name </th>
+        <th> Birth Date </th>
+        <th> Address </th>
+        <th> Courtesy </th>
+        <th> Hire Date </th>
+        <th> City </th>
+        <th> Region </th>
+        <th> Post Code </th>
+        <th> Country </th>
+
+    </tr>
+    </thead>
+    <tr th:each="actor: ${actors}">
+        <td th:text="${actor.id}"></td>
+        <td th:text="${actor.title}"></td>
+        <td th:text="${actor.firstName}"></td>
+        <td th:text="${actor.lastName}"></td>
+        <td th:text="${actor.birthDate}"></td>
+        <td th:text="${actor.address}"></td>
+
+        <td th:text="${actor.titleOfCourtesy}"></td>
+        <td th:text="${actor.hireDate}"></td>
+        <td th:text="${actor.city}"></td>
+        <td th:text="${actor.region}"></td>
+        <td th:text="${actor.postalCode}"></td>
+        <td th:text="${actor.country}"></td>
+    </tr>
+</table>
+</body>
+</html>

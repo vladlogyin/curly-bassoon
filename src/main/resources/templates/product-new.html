@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <style>
+
+        * {
+            background-image: url("/images/bg.jpg");
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: transparent;
+        }
+
+        tr:nth-child(even) {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<h1> Create Product Form</h1>
+<form th:action="@{/product/add}" th:object="${productToAdd}" method="POST">
+    <label form="id">Product ID</label>
+    <input type="text" id="id" name="id"/> <br/>
+
+    <label form="productName">Product Name</label>
+    <input type="text" id="productName" name="productName"/> <br/>
+
+    <label form="quantityPerUnit">Quantity Per Unit</label>
+    <input type="text" id="quantityPerUnit" name="quantityPerUnit"/> <br/>
+
+    <label form="unitPrice">Unit Price</label>
+    <input type="text" id="unitPrice" name="unitPrice"/> <br/>
+
+    <label form="unitsInStock">Units In Stock</label>
+    <input type="text" id="unitsInStock" name="unitsInStock"/> <br/>
+
+    <label form="unitsOnOrder">Units On Order</label>
+    <input type="text" id="unitsOnOrder" name="unitsOnOrder"/> <br/>
+
+    <label form="reorderLevel">Re-Order Level</label>
+    <input type="text" id="reorderLevel" name="reorderLevel"/> <br/>
+
+    <label form="discontinued">Discontinued</label>
+    <input type="text" id="discontinued" name="discontinued"/> <br/>
+
+    <!--    <input type="hidden" id="id" name="id" th:field="*{id}" />-->
+    <input type="submit" value="Submit New Product"/>
+</form>
+</span>
+</body>
+</html>

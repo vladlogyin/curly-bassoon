@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+
+        * {
+            background-image: url("/images/bg.jpg");
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: transparent;
+        }
+
+        tr:nth-child(even) {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+<h1> Product Details</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th> Name </th>
+        <th> Quantity </th>
+        <th> Price </th>
+        <th> Units in stock </th>
+        <th> Units on order </th>
+        <th> Reorder level </th>
+        <th> Discontinued </th>
+        <th colspan=2>Actions</th>
+    </tr>
+    </thead>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.productName}"></td>
+        <td th:text="${product.quantityPerUnit}"></td>
+        <td th:text="${product.unitPrice}"></td>
+        <td th:text="${product.unitsInStock}"></td>
+        <td th:text="${product.unitsOnOrder}"></td>
+        <td th:text="${product.reorderLevel}"></td>
+        <td th:text="${product.discontinued}"></td>
+        <td><button th:onclick="@{window.location.href='/product/edit/{id}';(id=${product.id})}">edit</button></td>
+<!--        <td><button th:onclick="@{window.location.href='/product/delete/{id}';(id=${product.id})}">delete</button></td>-->
+    </tr>
+</table>
+
+</body>
+</html>

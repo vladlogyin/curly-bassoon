@@ -39,8 +39,21 @@ div.back-message {
 }
 
 
-/*
-div.table-col{
 
-}*/
+div.action-container{
+    position: absolute;
+    float:left;
+    left:10%;
+    right:10%;
+    bottom:10%;
+    top:10%;
+    background-color:#00000020;
+    border-width: 2pt;
+    border-radius:10pt;
+    border-color: #FFFFFF20;
+    padding: 10pt;
+}
+div.action-set{
+
+}
 

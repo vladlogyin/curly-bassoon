@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "Customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CustomerID", nullable = false, length = 5)
     private String id;
 
@@ -127,5 +127,7 @@ public class Customer {
     public void setFax(String fax) {
         this.fax = fax;
     }
+
+
 
 }

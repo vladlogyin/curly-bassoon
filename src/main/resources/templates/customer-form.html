@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Form</title>
+</head>
+<body>
+<form th:action="@{/customer/add}" th:object="${customerObject}" method="POST">
+    <label for="id">Customer ID</label>
+    <input type="text" id="id" name="id" th:field="*{id}"/> <br/>
+
+    <label for="companyName">Company Name</label>
+    <input type="text" id="companyName" name="companyName" th:field="*{companyName}"/> <br/>
+
+    <label for="contactName">Contact Name</label>
+    <input type="text" id="contactName" name="contactName" th:field="*{contactName}"/> <br/>
+
+    <label for="contactTitle">Contact Title</label>
+    <input type="text" id="contactTitle" name="contactTitle" th:field="*{contactTitle}"/> <br/>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" th:field="*{address}"/> <br/>
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" th:field="*{city}"/> <br/>
+
+    <label for="region">Region</label>
+    <input type="text" id="region" name="region" th:field="*{region}"/> <br/>
+
+    <label for="postalCode">Postal Code</label>
+    <input type="text" id="postalCode" name="postalCode" th:field="*{postalCode}"/> <br/>
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country" th:field="*{country}"/> <br/>
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone" th:field="*{phone}"/> <br/>
+
+    <label for="fax">Fax</label>
+    <input type="text" id="fax" name="fax" th:field="*{fax}"/> <br/>
+
+    <input type="submit" value="Submit New Customer" />
+</form>
+</body>
+</html>
+

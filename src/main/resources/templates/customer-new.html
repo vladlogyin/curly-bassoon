@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/customer/add}" th:object="${customerObject}" method="POST">
+    <label for="id">Customer ID</label>
+    <input type="text" id="id" name="id"/> <br/>
+
+    <label for="companyName">Company Name</label>
+    <input type="text" id="companyName" name="companyName"/> <br/>
+
+    <label for="contactName">Contact Name</label>
+    <input type="text" id="contactName" name="contactName"/> <br/>
+
+    <label for="contactTitle">Contact Title</label>
+    <input type="text" id="contactTitle" name="contactTitle"/> <br/>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address"/> <br/>
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city"/> <br/>
+
+    <label for="region">Region</label>
+    <input type="text" id="region" name="region"/> <br/>
+
+    <label for="postalCode">Postal Code</label>
+    <input type="text" id="postalCode" name="postalCode"/> <br/>
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country"/> <br/>
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone"/> <br/>
+
+    <label for="fax">Fax</label>
+    <input type="text" id="fax" name="fax"/> <br/>
+
+    <input type="submit" value="Submit New Customer" />
+</form>
+</body>
+</html>

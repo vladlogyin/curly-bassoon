@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <title>Employee Details</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Customer Details</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Customer ID</th>
+        <th>Company Name</th>
+        <th>Contact Name</th>
+        <th>Contact Title</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Postal Code</th>
+        <th>Country</th>
+        <th>Phone</th>
+        <th>Fax</th>
+        <th colspan=2>Actions</th>
+    </tr>
+    </thead>
+    <tr th:each="customer: ${customers}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.companyName}"></td>
+        <td th:text="${customer.contactName}"></td>
+        <td th:text="${customer.contactTitle}"></td>
+        <td th:text="${customer.address}"></td>
+        <td th:text="${customer.city}"></td>
+        <td th:text="${customer.region}"></td>
+        <td th:text="${customer.postalCode}"></td>
+        <td th:text="${customer.country}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td th:text="${customer.fax}"></td>
+        <td><button th:onclick="@{window.location.href='/customer/edit/{id}';(id=${customer.id})}">edit</button></td>
+        <td><button th:onclick="@{window.location.href='/customer/delete/{id}';(id=${customer.id})}">delete</button></td>
+    </tr>
+</table>
+</body>
+</html>
