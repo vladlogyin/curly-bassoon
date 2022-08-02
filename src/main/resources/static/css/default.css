@@ -1,0 +1,46 @@
+#header {
+
+}
+#footer {
+
+}
+body.bg-image
+{
+    background-image: url("/images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+div.bg-image{
+    background-image: url("/images/bg.jpg");
+    filter: blur(8px);
+
+    height:100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1.back-message {
+    font-size: 50px;
+}
+div.back-message {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display: block; text-align: left; width: 650px; margin: 0 auto;
+    text-align: center; padding: 150px;
+}
+
+
+/*
+div.table-col{
+
+}*/
+
