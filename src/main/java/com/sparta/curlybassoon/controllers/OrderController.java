@@ -46,6 +46,6 @@ public class OrderController {
    @GetMapping("/order/delete/{id}")
     public String deleteOrder(@PathVariable int id){
        repo.delete(repo.findById(id).get());
-       return "order";
+       return "redirect:/orders";
    }
 }
