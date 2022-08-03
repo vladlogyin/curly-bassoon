@@ -1,6 +1,8 @@
 package com.sparta.curlybassoon.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Customers")
@@ -39,6 +41,9 @@ public class Customer {
 
     @Column(name = "Fax", length = 24)
     private String fax;
+
+    @OneToMany(mappedBy = "customerID",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
 
     public String getId() {
         return id;

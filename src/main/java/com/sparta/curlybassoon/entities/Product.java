@@ -2,6 +2,8 @@ package com.sparta.curlybassoon.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Products")
@@ -13,6 +15,9 @@ public class Product {
 
     @Column(name = "ProductName", nullable = false, length = 40)
     private String productName;
+
+    @OneToMany(mappedBy = "productID", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> test = new ArrayList<>();
 
     @Column(name = "QuantityPerUnit", length = 20)
     private String quantityPerUnit;
