@@ -12,14 +12,14 @@
     </style>
 </head>
 <body>
-<h1> Welcome to ... </h1>
+<h1> Northwind webapp </h1>
 <br><br><br>
 <div class="action-container">
     <div class="action-set">
         <h1>Products</h1>
         <a class="btn btn-outline-primary" href="/products">View all</a>
     </div>
-    <div class="vr"></div>
+    <div class="vr"  sec:authorize="hasRole('ADMIN')"></div>
     <div class="action-set" sec:authorize="hasRole('ADMIN')">
         <h1>Employees</h1>
         <a class="btn btn-outline-primary" href="/employees">View all</a>
@@ -28,12 +28,17 @@
     <div class="action-set">
         <h1>Orders</h1>
         <a class="btn btn-outline-primary" href="/orders">View all</a>
-        <a class="btn btn-outline-primary" href="/orders">Second action</a>
     </div>
-    <div class="vr"></div>
+    <div class="vr"  sec:authorize="hasRole('ADMIN')"></div>
     <div class="action-set" sec:authorize="hasRole('ADMIN')">
         <h1>Customers</h1>
         <a class="btn btn-outline-primary" href="/customers">View all</a>
+    </div>
+    <div class="vr" ></div>
+    <div class="action-set">
+        <h1>Account</h1>
+        <a class="btn btn-outline-primary" href="/basket">Basket</a>
+        <a class="btn btn-outline-danger" href="/signout">Sign out</a>
     </div>
 </div>
 </body>

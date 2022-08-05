@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -72,4 +74,17 @@ public class ProductController {
         }
         return "redirect:/products";
     }
+/*
+    @GetMapping("/basket/add/{id}")
+    public String addBasketMember(@PathVariable int id, @ModelAttribute("basketList") List<Product> basketList) {
+        Product product = repo.findById(id).get();
+        basketList.add(product);
+        return "basket";
+    }*/
+
+    @ModelAttribute("basketList")
+    public List<Product> basketList() {
+        return new ArrayList<Product>();
+    }
+
 }

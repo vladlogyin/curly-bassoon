@@ -19,13 +19,13 @@ public class NorthwindConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("Jeff")
+                .withUser("testuser")
                 .password(passwordEncoder().encode("secret123"))
                 .roles("USER")
                 .and()
-                .withUser("Kira")
+                .withUser("testadmin")
                 .password(passwordEncoder().encode("password"))
-                .roles("ADMIN");
+                .roles("ADMIN","USER");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -38,14 +38,22 @@ public class NorthwindConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/bootstrap/**").permitAll()
                 .antMatchers("/images/**").permitAll()*/
                 /***** Web App ****/
-                .antMatchers("/welcome").hasAnyRole("USER","ADMIN")
+                .antMatchers("/basket**").hasAnyRole("USER")
                 .antMatchers("/orders").hasAnyRole("USER","ADMIN")
+                .antMatchers("/products").hasAnyRole("USER","ADMIN")
+                .antMatchers("/welcome").hasAnyRole("USER","ADMIN")
+                .antMatchers("/order/**").hasAnyRole("ADMIN")
+                .antMatchers("/product/**").hasAnyRole("ADMIN")
+                .antMatchers("/employee**").hasAnyRole("ADMIN")
+                .antMatchers("/customer**").hasAnyRole("ADMIN")
+                .and().exceptionHandling().accessDeniedPage("/access-denied")
                 /**** login forms *****/
                 .and().formLogin()
                 .loginPage("/signin")
                 .loginProcessingUrl("/signin")
                 .defaultSuccessUrl("/welcome")
-                .failureUrl("/access-denied");
+                .failureUrl("/access-denied")
+                .and().logout().logoutUrl("/signout").logoutSuccessUrl("/signedout");
     }
 
     @Bean

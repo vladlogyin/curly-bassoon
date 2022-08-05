@@ -8,40 +8,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Products</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" style="margin-left:5px;" href="/welcome">Northwind</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/customers">Customers </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/products">Products <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/orders">Orders</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/employees">Employees</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a class="btn btn-outline-success my-2 my-sm-0" href="/product/new">New Product</a>
-        </form>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:replace="fragments/navbar.html">
 </nav>
 <div class="container">
     <div class="row">
         <div class="justify-content-center">
             <div class="col-auto">
                 <h1>Products</h1>
+                <form class="form-inline my-2 my-lg-0" sec:authorize="hasRole('ADMIN')">
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="/product/new">New Product</a>
+                </form>
                 <table class="table table-responsive table-striped table-hover">
                     <thead>
                     <tr>
@@ -53,7 +32,7 @@
                         <th> Units on order </th>
                         <th> Reorder level </th>
                         <th> Discontinued </th>
-                        <th colspan=2>Actions</th>
+                        <th colspan=3 sec:authorize="hasAnyRole('ADMIN','USER')">Actions</th>
                     </tr>
                     </thead>
                     <tr th:each="product: ${products}">
@@ -65,8 +44,10 @@
                         <td th:text="${product.unitsOnOrder}"></td>
                         <td th:text="${product.reorderLevel}"></td>
                         <td th:text="${product.discontinued}"></td>
-                        <td><button class="btn btn-primary" th:onclick="@{window.location.href='/product/edit/{id}';(id=${product.id})}">edit</button></td>
-                        <td><button class="btn btn-danger" th:onclick="@{window.location.href='/product/delete/{id}';(id=${product.id})}">delete</button></td>
+
+                        <td sec:authorize="hasRole('USER')"><button class="btn btn-primary" th:onclick="@{window.location.href='/basket/add/{id}';(id=${product.id})}">Add</button></td>
+                        <td sec:authorize="hasRole('ADMIN')"><button class="btn btn-primary" th:onclick="@{window.location.href='/product/edit/{id}';(id=${product.id})}">Edit</button></td>
+                        <td sec:authorize="hasRole('ADMIN')"><button class="btn btn-danger" th:onclick="@{window.location.href='/product/delete/{id}';(id=${product.id})}">Delete</button></td>
                     </tr>
                 </table>
             </div>

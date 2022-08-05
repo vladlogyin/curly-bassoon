@@ -1,11 +1,15 @@
-<nav  class="navbar navbar-expand-lg navbar-light bg-light" th:replace="fragments/navbar.html">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" style="margin-left:5px;" href="/welcome">Northwind</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <script>
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function(){
+                determineActive();
+            });
+
             function determineActive()
             {
                 let currentPath = window.location.href;
@@ -13,15 +17,18 @@
                     document.getElementById("navCustomers"),
                     document.getElementById("navProducts"),
                     document.getElementById("navEmployees"),
-                    document.getElementById("navOrders")
+                    document.getElementById("navOrders"),
+                    document.getElementById("navBasket")
                 ];
-                for(let elem of elements)
+                elements.forEach((elem)=>
                 {
-                    let aElem = elem.getElementsByTagName("a")[0];
-                    if(currentPath.contains(aElem.getAttribute("href"))) {
-                        elem.classList.add("active");
+                    if(elem) {
+                        let aElem = elem.getElementsByTagName("a")[0];
+                        if (currentPath.toLowerCase().includes(aElem.getAttribute("href"))) {
+                            elem.classList.add("active");
+                        }
                     }
-                }
+                });
             }
         </script>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0" onload="determineActive();">
@@ -31,15 +38,16 @@
             <li id="navProducts" class="nav-item">
                 <a class="nav-link" href="/products">Products</a>
             </li>
-            <li id="navOrders" class="nav-item active">
+            <li id="navOrders" class="nav-item">
                 <a class="nav-link" href="/orders">Orders</a>
             </li>
             <li id="navEmployees" class="nav-item" sec:authorize="hasRole('ADMIN')">
                 <a class="nav-link" href="/employees">Employees</a>
             </li>
+            <li id="navBasket" class="nav-item" sec:authorize="hasRole('USER')">
+                <a class="nav-link" href="/basket">Basket</a>
+            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a class="btn btn-outline-success my-2 my-sm-0" href="/order/new">New Order</a>
-        </form>
+        <a class="nav-link float-right btn btn-outline-danger" href="/signout">Sign out</a>
     </div>
 </nav>

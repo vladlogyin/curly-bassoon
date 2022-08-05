@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Basket</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:replace="fragments/navbar.html">
+</nav>
+<h1 class="jumbotron">
+    <span sec:authentication="name"></span>'s Basket
+</h1>
+
+<div class="panel-body" style="margin-left:10px;margin-right:10px;max-height:100%;width:80vw;max-width:500px;margin-left:auto;margin-right:auto;">
+<table class=" table table-responsive table-striped table-hover" style="overflow:scroll;">
+    <thead>
+    <tr>
+        <th class="col"> Name </th>
+        <th class="col"> Quantity </th>
+        <th class="col"> Price </th>
+    </tr>
+    </thead>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.getKey().productName}"></td>
+        <td th:text="${product.getValue().toString()}"></td>
+        <td th:text="${product.getKey().unitPrice}"></td>
+    </tr>
+</table>
+    <h2 class="col-md-11" th:inline="text">Total: [[${total}]]</h2>
+    <a href="/basket/checkout" class="btn btn-danger disabled">Checkout</a>
+</div>
+
+
+</body>
+</html>

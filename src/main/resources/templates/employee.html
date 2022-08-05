@@ -8,41 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Employees</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" style="margin-left:5px;" href="/welcome">Northwind</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/customers">Customers </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/products">Products</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/orders">Orders</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/employees">Employees<span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-<!--        <form class="form-inline my-2 my-lg-0">-->
-<!--            <a class="btn btn-outline-success my-2 my-sm-0" href="/">New Employee</a>-->
-<!--        </form>-->
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:replace="fragments/navbar.html">
 </nav>
 <div class="container">
     <div class="row">
         <div class="justify-content-center">
             <div class="col-auto">
                 <h1>Employee Details</h1>
-                <table class="table table-responsive table-striped table-hover">
+                <table class="table table-responsive table-striped table-hover" style="max-height:80vh;width:90vw;overflow:scroll;">
                     <thead>
                     <tr>
                         <th>ID</th>

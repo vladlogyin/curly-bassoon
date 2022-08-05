@@ -18,12 +18,15 @@
         <div class="justify-content-center">
             <div class="col-auto">
                 <h1>Orders</h1>
-                <table class="table table-responsive table-striped table-hover">
+                <form class="form-inline my-2 my-lg-0" sec:authorize="hasRole('ADMIN')">
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="/order/new">New Order</a>
+                </form>
+                <table class="table table-responsive table-striped table-hover" style="height:80vh;width:90vw;overflow:scroll;">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">CustomerID</th>
-                        <th scope="col">EmployeeId</th>
+                        <th style="width:6%" scope="col">EmployeeId</th>
                         <th scope="col">Order Date</th>
                         <th scope="col">Required Date</th>
                         <th scope="col">Shipped Date</th>
@@ -40,8 +43,8 @@
                     </thead>
                     <tr th:each="order: ${orders}">
                         <td th:text="${order.id}"></td>
-                        <td th:text="${order.customerID.id}"></td>
-                        <td th:text="${order.employeeID.id}"></td>
+                        <td th:text="${order.customerID}==null?'N/A':${order.customerID.id}"></td>
+                        <td th:text="${order.employeeID}==null?'N/A':${order.employeeID.id}"></td>
                         <td th:text="${order.orderDate}"></td>
                         <td th:text="${order.requiredDate}"></td>
                         <td th:text="${order.shippedDate}"></td>
@@ -53,8 +56,6 @@
                         <td th:text="${order.shipRegion}"></td>
                         <td th:text="${order.shipPostalCode}"></td>
                         <td th:text="${order.shipCountry}"></td>
-<!--                        <td><button class="btn btn-primary" th:onclick="@{window.location.href='/order/edit/{id}';(id=${customer.id})}">edit</button></td>-->
-<!--                        <td><button class="btn btn-danger"th:onclick="@{window.location.href='/order/delete/{id}';(id=${customer.id})}">delete</button></td>-->
                     </tr>
                 </table>
             </div>
