@@ -14,7 +14,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @GetMapping("/employee") // this will return all customers
+    @GetMapping("/employees") // this will return all customers
     public String employee(Model model) {
         Employee[] employees = employeeRepository.findAll().toArray(new Employee[0]);
         model.addAttribute("actors", employees);
